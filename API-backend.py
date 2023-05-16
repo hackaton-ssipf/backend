@@ -7,29 +7,32 @@ app = Flask(__name__)
 # funkce pro hledani zarizeni podle device_id
 def find_device_in_database(id:int):
     with open('databaze.csv', 'r') as file:
-        read = csv.reader(file)
-        for line in read:
+        csv_file = csv.reader(file)
+        for line in csv_file:
             if line[1] == id:
                 return line[2]
 
 # funkce pro hledani zarizeni podle device_id
 def find_metadata_in_database(id:int):
     with open('databaze.csv', 'r') as file:
-        read = []
-        read = csv.reader(file)
-        for line in len(read):
-            if line[-1-line] == id:
+        csv_file = csv.reader(file)
+        for line in csv_file:
+            if line[1] == id:
+                return line[4]    
+        # Prochazi zezadu vsechny pozice csv_file listu
+        for line in csv_file:
+            if line[-1] == id:
                 return line[4]
 
 #funcke pro zjisteni pripojenych zarizeni
 def connected_devices():
     devices = []
     with open('devices.csv', 'r') as file:
-        read = csv.reader(file)
-        for row in read:
-            if (row[1] == "device_type" ):
+        csv_file = csv.reader(file)
+        for line in csv_file:
+            if (line[1] == "device_type" ):
                 continue
-            devices.append(row[1])
+            devices.append(line[1])
         return devices
 
 # vrati nazvy vsech momentalne pripojenych zarizeni
