@@ -1,6 +1,4 @@
 CONNECTION_ID,DEVICE_ID,DEVICE_TYPE,TIME_STAMP,METADATA
-
-CONNECTION_ID,DEVICE_ID,DEVICE_TYPE,TIME_STAMP,METADATA
 0,1,LIGHT,20230516110952,"{'power_consumption': 60, 'brightness': 80}"
 0,1,LIGHT,20230516111015,"{'power_consumption': 55, 'brightness': 75}"
 0,1,LIGHT,20230516111030,"{'power_consumption': 58, 'brightness': 78}"
