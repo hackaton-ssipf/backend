@@ -1,0 +1,19 @@
+{
+    "COMMENTS": {
+     "MAIN": "this section wont be included in the data format",
+     "CONNECTION_ID": "this id determines if this data is meant to the reciever: if the connection ID doesnt match, the server will throw them away. the ID is random number selected at the start of the connection",
+     "DEVICE_ID": "this determines the device, if it isnt in the server database it will be thrown away",
+     "DEVICE_TYPE": "this handeles how should the server treat the metadata from the device: lights will return different data then something else",
+     "METADATA": "this is the actuall data to work with, it can range in many different ways."
+    },
+    "CONNECTION_ID": 0,
+    "DEVICE_ID": 0,
+    "DEVICE_TYPE": "LIGHT",
+    "TIME_STAMP": 20230516110952,
+    "METADATA": {
+        "EXAMPLE_DATA": true,
+        "EXAMPLE_DATA1": 14534
+    }
+
+
+}

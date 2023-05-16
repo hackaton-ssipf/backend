@@ -31,7 +31,7 @@ To start the backend server, run the following command:
 python app.py
 
 By default, the server will start on http://localhost:3000.
-##API Endpoints
+## API Endpoints
 
 The backend exposes the following API endpoints:
 

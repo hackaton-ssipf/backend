@@ -1,0 +1,11 @@
+{
+    "COMMENTS": {
+     "MAIN": "this section wont be included in the data format",
+     "INFO": "this is used for connecting, adn disconnecting devices into the database"
+    },
+    "CONNECTION_ID": 0,
+    "DEVICE_ID": 0,
+    "DEVICE_TYPE": "LIGHT"
+
+
+}
