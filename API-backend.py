@@ -94,7 +94,7 @@ def change_led_state(device_id: int, connection_id: int, led_state: bool, led_rg
         if i[0] == str(device_id):
            does_device_exit = true
            break
-    if !does_device_exit:
+    if not does_device_exit:
         return 2
 
     WLED.change_state(device_id, led_state, led_rgb)
