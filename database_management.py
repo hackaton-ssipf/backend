@@ -57,4 +57,3 @@ def get_device(device_id: int) -> list:
             if row[0] == str(device_id):
                 print(type(row))
                 return row
-
