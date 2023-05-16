@@ -6,6 +6,7 @@ import csv_device as db
 import prompt_generator
 import AI_API
 import database_management
+import WLED.main as WLED
 
 load_dotenv("locales.env")
 device_filename = str(os.getenv('deviceDatabase', default="devices.csv"))
@@ -81,6 +82,27 @@ def get_ai_suggestion(device_type, start, end, device_id = -1):
 @app.route('/api/device/<id>', methods=['POST'])
 def post_device(connect_id, id, type):
     database_management.add_device(id, connect_id, type)
+
+@app.route('/api/wled/<id>', methods=['POST'])
+def change_led_state(device_id: int, connection_id: int, led_state: bool, led_rgb: list):
+    if connection_id != int(os.getenv('id', default= -1)):
+        return 1
+    f = cvs.reader(device_filename, "r+")
+
+    does_device_exit : bool = false
+    for i in f:
+        if i[0] == str(device_id):
+           does_device_exit : bool = true
+           break
+    if !does_device_exit:
+        return 2
+
+    WLED.change_state(device_id, led_state, led_rgb)
+    return 0
+
+    
+           
+    
     
         
         
