@@ -39,7 +39,6 @@ The backend exposes the following API endpoints:
     POST /api/devices/{deviceId}: Registers a new smart home device.
     GET /api/devices/{deviceId}: Retrieves details of a specific smart home device.
     DELETE /api/devices/{deviceId}: Deletes a specific smart home device.
-    POST
 
 
 Make sure to replace the placeholder values ({deviceId}) with the actual device ID.

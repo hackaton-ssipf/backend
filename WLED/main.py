@@ -72,7 +72,7 @@ class LED():
 
 
 
-    
+"""
 manager = LED_manager()
 
 time.sleep(1)
@@ -85,3 +85,4 @@ manager.change_state(1,True,[0,0,255])
 manager.set_color(2,[0,0,0])
 manager.change_state(2,True,[255,0,0])
 manager.change_state(3,True,[0,255,0])
+"""
