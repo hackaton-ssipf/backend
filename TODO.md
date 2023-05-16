@@ -1,6 +1,6 @@
 - přidat  API endpointy podle README.md
-- definovat data model pro chytrá zařízeni pro komunikaci (JSON)
-- vytvořit .env example file
+- [DONE] definovat data model pro chytrá zařízeni pro komunikaci (JSON)
+- [DONE] vytvořit .env example file
 - vyvtořit nejspiš csv databázi všech připojených zařízení s funkcema na přidání, odebrání a modifikaci zařízeni
 - vtovřit databázi všech přijatých dat
 - vytvořit kód na vytvoáření statistik z přijatých dat
