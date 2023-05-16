@@ -22,15 +22,23 @@ def find_device_in_database(id:int):
 
 # funkce pro hledani zarizeni podle device_id
 def find_metadata_in_database(id:int):
-    with open(device_filename, 'r') as file:
+    with open('databaze.csv', 'r') as file:
+        main_list = []
+        line_list = []
+        metadata = {}
         csv_file = csv.reader(file)
-        for line in csv_file:
-            if line[1] == id:
-                return line[4]    
-        # Prochazi zezadu vsechny pozice csv_file listu
-        for line in csv_file:
-            if line[-1] == id:
-                return line[4]
+        
+        for i in csv_file:
+            main_list.append([i])
+        print(main_list)
+
+        for line in main_list:
+            line_list.append(line)
+
+        for line in main_list:
+            if (main_list[0-line][3] == id):
+                metadata = main_list[0-line][4]
+            return  
 
 #funcke pro zjisteni pripojenych zarizeni
 def connected_devices():
