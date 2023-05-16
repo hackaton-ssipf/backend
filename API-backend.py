@@ -29,6 +29,7 @@ def get_device(id):
     # prirazeni zarizeni podle id do promenne device
     device = find_device_in_database(id)
 
+    # when there is no device with the provided device_id, error message will be displayed
     if device is None:
         response = {'error':'Device not found'}
         return jsonify(response)
@@ -36,4 +37,3 @@ def get_device(id):
     else:
         # the return of the JSON response
         return jsonify(response)
-
