@@ -15,9 +15,10 @@ def find_device_in_database(id:int):
 # funkce pro hledani zarizeni podle device_id
 def find_metadata_in_database(id:int):
     with open('databaze.csv', 'r') as file:
+        read = []
         read = csv.reader(file)
-        for line in read:
-            if line[1] == id:
+        for line in len(read):
+            if line[-1-line] == id:
                 return line[4]
 
 #funcke pro zjisteni pripojenych zarizeni
