@@ -1,12 +1,11 @@
-from enum import Enum
 from dotenv import load_dotenv
 import os
 import json
 import csv
 
 load_dotenv("locales.env")
-device_filename = str(os.getenv('deviceDatabase'), default="devices.csv")
-signals_filename = str(os.getenv('deviceSignalsDatabase'), default="databaze.csv")
+device_filename = str(os.getenv('deviceDatabase', default="devices.csv"))
+signals_filename = str(os.getenv('deviceSignalsDatabase', default="databaze.csv"))
 
 def save_json_to_csv(data):
 
