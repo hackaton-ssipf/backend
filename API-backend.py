@@ -32,9 +32,7 @@ def find_metadata_in_database(id:int):
         
         for i in csv_file:
             main_list.append(i)
-        
-        #print(main_list)
-        print(type(id))
+
         for line in range(len(main_list) - 1):
             if (int(main_list[-1-line][1]) == int(id)):
                 metadata = main_list[-1-line][4]
@@ -67,12 +65,9 @@ def get_devices():
 @app.route('/api/device/<id>', methods=['GET'])
 def get_device(id):
 
-    #print(id)
     # prirazeni zarizeni podle id do promenne device
     device = find_device_in_database(id)
     device_metadata = find_metadata_in_database(id)
-
-    print(device_metadata)
 
     # when there is no device with the provided device_id, error message will be displayed
     if device is None:
@@ -98,22 +93,15 @@ def post_device(connect_id, id, type):
 def change_led_state(device_id: int, connection_id: int, led_state: bool, led_rgb: list):
     if connection_id != int(os.getenv('id', default= -1)):
         return 1
-    f = cvs.reader(device_filename, "r+")
+    f = csv.reader(device_filename, "r+")
 
-    does_device_exit = false
+    does_device_exit = False
     for i in f:
         if i[0] == str(device_id):
-           does_device_exit = true
+           does_device_exit = True
            break
     if not does_device_exit:
         return 2
 
     WLED.change_state(device_id, led_state, led_rgb)
     return 0
-
-    
-           
-    
-    
-        
-        
