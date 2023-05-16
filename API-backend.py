@@ -24,9 +24,7 @@ def find_device_in_database(id:int):
 # funkce pro hledani zarizeni podle device_id
 def find_metadata_in_database(id:int):
     with open('databaze.csv', 'r') as file:
-        # hlavni list do ktereho se ulozi cely soubor po radcich
         main_list = []
-        # slovnik do ktereho budou prirazena metadata
         metadata = {}
         csv_file = csv.reader(file)
         
