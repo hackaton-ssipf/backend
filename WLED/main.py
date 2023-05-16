@@ -34,3 +34,6 @@ for i in range(15):
 print(wled_settings["seg"])
 # Odeslat konfiguraci WLED
 configure_wled(wled_url, wled_settings)
+
+def change_state(device_id:int, state: bool, rgb: list ):
+    pass
