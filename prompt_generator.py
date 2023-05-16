@@ -60,7 +60,7 @@ def convert_number_to_time(number):
         str(number // 1000 % 10) + str(number // 100 % 10), 
         str(number // 10 % 10) + str(number % 10), 
     ]
-
+"""
 print(AI_API.get_help(generate_prompt("TV", 0, 20231230235959)))
 print("")
 
@@ -70,3 +70,4 @@ print(AI_API.get_help(generate_prompt("DOOR_SENSOR", 0, 20231230235959)))
 print("")
 print(AI_API.get_help(generate_prompt("HEATING", 0, 20231230235959)))
 
+"""
