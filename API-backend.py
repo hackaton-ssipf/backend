@@ -1,17 +1,19 @@
 from flask import Flask, jsonify
 import csv
-import csv_device
+import csv_device as db
 
 app = Flask(__name__)
 
-devices = [{'TV':'true', 'lamp':'false', 'oven':'false'}]
+devices = {'TV':'off', 'radio':'on', 'lamp':'off'}
 
-def find_device_in_database(id:str):
-    with open('soubor.txt', 'r') as file:
-    for i in 
-
-
-
+# funkce pro hledani zarizeni podle device_id
+def find_device_in_database(id):
+    with open('devices.csv', 'r') as file:
+        for line in file:
+            if line[0] == id:
+                return line[1]
+                
+# vrati nazvy zarizeni
 @app.route('/api/devices', methods=['GET'])
 def get_devices():
     # tvorba odpovedi v JSON formatu
@@ -20,13 +22,13 @@ def get_devices():
     # vraci hodnoty v JSON formatu
     return jsonify(response)
 
-@app.route('/api/devices/')
-
-# retrieves details of a specific smart device
+# zobrazi detaily specifickeho podle zadane device_id
 @app.route('/api/devices/<id>', methods=['GET'])
 def get_device(id):
 
+    # prirazeni zarizeni podle id do promenne device
     device = find_device_in_database(id)
+
     if device is None:
         response = {'error':'Device not found'}
         return jsonify(response)
