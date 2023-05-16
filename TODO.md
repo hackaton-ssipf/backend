@@ -2,5 +2,6 @@
 - [DONE] definovat data model pro chytrá zařízeni pro komunikaci (JSON)
 - [DONE] vytvořit .env example file
 - [DONE] vyvtořit nejspiš csv databázi všech připojených zařízení s funkcema na přidání, odebrání a modifikaci zařízeni
-- vtovřit databázi všech přijatých dat
-- vytvořit kód na vytvoáření statistik z přijatých dat
+- [DONE] vtovřit databázi všech přijatých dat
+- [DONE] vytvořit kód na vytvoáření statistik z přijatých dat
+- prezentaci !

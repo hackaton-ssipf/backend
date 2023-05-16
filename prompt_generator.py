@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 import json
 import csv_device as db
+import AI_API
 
 def generate_prompt(device_type, start, end, device_id = -1):
     database = db.load_database()
@@ -60,11 +61,12 @@ def convert_number_to_time(number):
         str(number // 10 % 10) + str(number % 10), 
     ]
 
-print(generate_prompt("TV", 0, 20231230235959))
+print(AI_API.get_help(generate_prompt("TV", 0, 20231230235959)))
 print("")
-print(generate_prompt("LIGHT", 0, 20231230235959))
+
+print(AI_API.get_help(generate_prompt("LIGHT", 0, 20231230235959)))
 print("")
-print(generate_prompt("DOOR_SENSOR", 0, 20231230235959))
+print(AI_API.get_help(generate_prompt("DOOR_SENSOR", 0, 20231230235959)))
 print("")
-print(generate_prompt("HEATING", 0, 20231230235959))
-    
+print(AI_API.get_help(generate_prompt("HEATING", 0, 20231230235959)))
+

@@ -1,19 +1,12 @@
 import openai
 import os
 import dotenv
-def get_help(data: str, device: str,model="text-curie-001",temp=0.3) -> str:
+def get_help(prompt: str,model="text-davinci-002",temp=0.869) -> str:
     # Nastavení OpenAI API klíče
     dotenv.load_dotenv("locales.env")
     openai.api_key = os.getenv('openAIkey')
 
     # Příprava dotazu
-    prompt = f"""Smart Home Energy Report
-
-    Usage Patterns:
-    {data}
-
-    Question: How can I optimize the usage of my smart {device} system based on these usage patterns?"""
-
     # Volání OpenAI API
     response = openai.Completion.create(
         engine=model,

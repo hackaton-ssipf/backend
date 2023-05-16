@@ -36,10 +36,11 @@ By default, the server will start on http://localhost:3000.
 The backend exposes the following API endpoints:
 
     GET /api/devices: Retrieves a list of all registered smart home devices.
-    POST /api/devices: Registers a new smart home device.
+    POST /api/devices/{deviceId}: Registers a new smart home device.
     GET /api/devices/{deviceId}: Retrieves details of a specific smart home device.
-    PUT /api/devices/{deviceId}: Updates the configuration of a specific smart home device.
     DELETE /api/devices/{deviceId}: Deletes a specific smart home device.
+    POST
+
 
 Make sure to replace the placeholder values ({deviceId}) with the actual device ID.
 
