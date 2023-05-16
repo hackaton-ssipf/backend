@@ -5,16 +5,18 @@ import csv_device as db
 app = Flask(__name__)
 
 # funkce pro hledani zarizeni podle device_id
-def find_device_in_database(id):
+def find_device_in_database(id:int):
     with open('databaze.csv', 'r') as file:
-        for line in file.reverse():
+        read = csv.reader(file)
+        for line in read:
             if line[1] == id:
                 return line[2]
 
 # funkce pro hledani zarizeni podle device_id
-def find_metadata_in_database(id):
+def find_metadata_in_database(id:int):
     with open('databaze.csv', 'r') as file:
-        for line in file.reverse():
+        read = csv.reader(file)
+        for line in read:
             if line[1] == id:
                 return line[4]
 
@@ -39,7 +41,7 @@ def get_devices():
     # vraci hodnoty v JSON formatu
     return jsonify(response)
 
-"""
+
 # zobrazi detaily specifickeho zarizeni podle zadane device_id
 @app.route('/api/device/<id>', methods=['GET'])
 def get_device(id):
@@ -55,6 +57,6 @@ def get_device(id):
 
     else:
         # the return of the JSON response
-        response = {'device':device}
+        response = {'device':device, 'metadata':device_metadata}
         return jsonify(response)
-        """
+        
