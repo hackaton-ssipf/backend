@@ -1,34 +1,31 @@
 import openai
 import os
 import dotenv
+def get_help(data: str, device: str,model="text-curie-001",temp=0.3) -> str:
+    # Nastavení OpenAI API klíče
+    dotenv.load_dotenv("locales.env")
+    openai.api_key = os.getenv('openAIkey')
 
-# Nastavení OpenAI API klíče
-dotenv.load_dotenv("locales.env")
-openai.api_key = os.getenv('openAIkey')
+    # Příprava dotazu
+    prompt = f"""Smart Home Energy Report
 
-# Příprava dotazu
-prompt = """Smart Home Energy Report
+    Usage Patterns:
+    {data}
 
-Usage Patterns:
+    Question: How can I optimize the usage of my smart {device} system based on these usage patterns?"""
 
-- 2023-05-15 08:00: ON OFF ON OFF ON
-- 2023-05-15 12:30: ON OFF ON ON OFF
-- 2023-05-15 18:45: ON ON OFF OFF ON
+    # Volání OpenAI API
+    response = openai.Completion.create(
+        engine=model,
+        prompt=prompt,
+        max_tokens=1000,
+        n=1,
+        stop=None,
+        temperature=temp
+    )
 
-Question: How can I optimize the usage of my smart lighting system based on these usage patterns?"""
+    # Získání odpovědi
+    answer = response.choices[0].text.strip()
 
-# Volání OpenAI API
-response = openai.Completion.create(
-    engine='text-davinci-003',
-    prompt=prompt,
-    max_tokens=100,
-    n=1,
-    stop=None,
-    temperature=0.7
-)
-
-# Získání odpovědi
-answer = response.choices[0].text.strip()
-
-# Výstup odpovědi
-print(answer)
+    # Výstup odpovědi
+    return answer
