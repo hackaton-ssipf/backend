@@ -8,7 +8,7 @@ device_filename = str(os.getenv('deviceDatabase', default="devices.csv"))
 signals_filename = str(os.getenv('deviceSignalsDatabase', default="databaze.csv"))
 
 def save_json_to_csv(data):
-
+    
     open(signals_filename, "a+")
     if os.stat(signals_filename).st_size == 0:
         f = csv.writer(open(signals_filename, "w+"))
@@ -53,7 +53,7 @@ def load_database():
     return data
     
 
-def timeframe(data, start, end):
+def timeframe(data, start: int, end: int):
     return_data = []
     for i in data:
         if int(i[3]) >= start and int(i[3]) <= end:
@@ -61,7 +61,7 @@ def timeframe(data, start, end):
             return_data.append(i)
     return return_data
 
-def lookup(data, header, value):
+def lookup(data, header: int, value: str):
     #print(type(f))
     return_data = []
     for i in data:
