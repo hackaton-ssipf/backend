@@ -87,6 +87,11 @@ def get_ai_suggestion(device_type, start, end, device_id = -1):
 def post_device(connect_id, id, type):
     database_management.add_device(id, connect_id, type)
 
+# function for deleting specific devices using the device_id
+@app.route('/api/device/<id>', methods=['DELETE'])
+def delete_device(connect_id, id, type):
+    database_management.remove_device(id, connect_id, type)
+
 @app.route('/api/wled/<id>', methods=['POST'])
 def change_led_state(device_id: int, connection_id: int, led_state: bool, led_rgb: list):
     if connection_id != int(os.getenv('id', default= -1)):
