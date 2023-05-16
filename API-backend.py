@@ -1,12 +1,20 @@
 from flask import Flask, jsonify
+from dotenv import load_dotenv
+import os
 import csv
 import csv_device as db
+import prompt_generator
+import AI_API
+import database_management
+
+load_dotenv("locales.env")
+device_filename = str(os.getenv('deviceDatabase', default="devices.csv"))
 
 app = Flask(__name__)
 
 # funkce pro hledani zarizeni podle device_id
 def find_device_in_database(id:int):
-    with open('databaze.csv', 'r') as file:
+    with open(device_filename, 'r') as file:
         csv_file = csv.reader(file)
         for line in csv_file:
             if line[1] == id:
@@ -14,7 +22,7 @@ def find_device_in_database(id:int):
 
 # funkce pro hledani zarizeni podle device_id
 def find_metadata_in_database(id:int):
-    with open('databaze.csv', 'r') as file:
+    with open(device_filename, 'r') as file:
         csv_file = csv.reader(file)
         for line in csv_file:
             if line[1] == id:
@@ -27,7 +35,7 @@ def find_metadata_in_database(id:int):
 #funcke pro zjisteni pripojenych zarizeni
 def connected_devices():
     devices = []
-    with open('devices.csv', 'r') as file:
+    with open(device_filename, 'r') as file:
         csv_file = csv.reader(file)
         for line in csv_file:
             if (line[1] == "device_type" ):
@@ -63,4 +71,16 @@ def get_device(id):
         # the return of the JSON response
         response = {'device':device, 'metadata':device_metadata}
         return jsonify(response)
+
+# vrati ai generovany napad na zlepseni elektricke otazky
+@app.route('/api/suggestion', methods=['GET'])
+def get_ai_suggestion(device_type, start, end, device_id = -1):
+    prompt = prompt_generator.generate_prompt(device_type, start, end, device_id)
+    return AI_API.get_help(prompt)
+
+@app.route('/api/device/<id>', methods=['POST'])
+def post_device(connect_id, id, type):
+    database_management.add_device(id, connect_id, type)
+    
+        
         
