@@ -34,8 +34,8 @@ def save_json_to_csv(data):
     for i in list(data):
         if i != "COMMENTS":
             new_row.append(data[i])
-     file.writerow(new_row)
-     return 0
+    file.writerow(new_row)
+    return 0
 
 # This function will load our database in a way that is usefull for other functions functionality.
 def load_database():
@@ -56,10 +56,10 @@ def timeframe(data, start: int, end: int):
     return return_data
 
 # This function outputs a database with only the rows that have the specified value under the specified columb.
-def lookup(data, columb: int, value: str):
+def lookup(data, column: int, value: str):
     return_data = []
     for i in data:
-        if i[columg=b] == value:
+        if i[column] == value:
             return_data.append(i)
     return return_data
 
