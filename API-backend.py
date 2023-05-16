@@ -89,10 +89,10 @@ def change_led_state(device_id: int, connection_id: int, led_state: bool, led_rg
         return 1
     f = cvs.reader(device_filename, "r+")
 
-    does_device_exit : bool = false
+    does_device_exit = false
     for i in f:
         if i[0] == str(device_id):
-           does_device_exit : bool = true
+           does_device_exit = true
            break
     if !does_device_exit:
         return 2
