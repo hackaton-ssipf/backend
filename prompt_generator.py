@@ -3,7 +3,7 @@ import json
 import csv_device as db
 import AI_API
 
-def generate_prompt(device_type, start, end, device_id = -1):
+def generate_prompt(device_type: str, start: int, end: int, device_id: int = -1):
     database = db.load_database()
     database = db.timeframe(database, start, end)
     database = db.lookup(database, 2, device_type)
@@ -51,7 +51,7 @@ def generate_prompt(device_type, start, end, device_id = -1):
 
 # 2023 05 23 11 38 02
 
-def convert_number_to_time(number):
+def convert_number_to_time(number: int):
     return [
         str(number // 10000000000),
         str(number // 100000000 % 100),
