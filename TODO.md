@@ -1,0 +1,3 @@
+- přidat  API endpointy podle README.md
+- definovat data model pro chytrá zařízeni pro komunikaci (JSON)
+- vytvořit .env example file
