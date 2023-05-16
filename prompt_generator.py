@@ -71,3 +71,4 @@ print("")
 print(AI_API.get_help(generate_prompt("HEATING", 0, 20231230235959)))
 
 """
+print(AI_API.get_help(""))
