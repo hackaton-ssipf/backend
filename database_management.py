@@ -58,7 +58,3 @@ def get_device(device_id: int) -> list:
                 print(type(row))
                 return row
 
-add_device(1, 0, "light")
-add_device(2, 0, "light")
-remove_device(1, 0)
-get_device(2)
