@@ -14,7 +14,7 @@ def generate_prompt(device_type: str, start: int, end: int, device_id: int = -1)
 
     # If there are no results in the database, return info about that.
     if len(database) == 0:
-        return "No Smart Home Status Report for " + device_type + "."
+        return None
 
     # Generate prompt from the found data
     prompt = "Smart Home Status Report\n\n" + device_type + " Usage Reports:\n\n"

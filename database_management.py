@@ -58,5 +58,4 @@ def get_device(device_id: int) -> list:
         reader = csv.reader(file)
         for row in reader:
             if row[0] == str(device_id):
-                print(type(row))
                 return row

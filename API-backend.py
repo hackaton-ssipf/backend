@@ -73,9 +73,9 @@ def get_device(id):
         return jsonify(response)
 
 # returns ai generated answer on how to improve electricity consumption 
-@app.route('/api/suggestion', methods=['GET'])
-def get_ai_suggestion(device_type, start, end, device_id = -1):
-    prompt = prompt_generator.generate_prompt(device_type, start, end, device_id)
+@app.route('/api/suggestion/<device_type>', methods=['GET'])
+def get_ai_suggestion(device_type):
+    prompt = prompt_generator.generate_prompt(device_type, 0, 999999999999999)
     return AI_API.get_help(prompt)
 
 # registers a new device with a new device_id
@@ -86,17 +86,27 @@ def post_device(data):
     connect_id = data["connect_id"]
     database_management.add_device(id, connect_id, type)
 
+@app.route('/api/getbrightness/<id>', methods=['GET'])
+def get_device_brightness(id):
+    return str(WLED.LED_manager().leds[1].brightness)
+
 # deletes specific devices using the device_id
 @app.route('/api/device/<connect_id>/<type>/<id>', methods=['DELETE'])
 def delete_device(connect_id, id, type):
     database_management.remove_device(id, connect_id, type)
 
+@app.route('/api/wled_off/<led_state>', methods=['GET'])
+def switch_led(led_state):
+    WLED.LED_manager().change_state(1, led_state, [255,0,0])
+    return "sucess"
+
 @app.route('/api/brightness/<brightness>', methods=['GET'])
-def switch_led(brightness):
+def switch_led2(brightness):
     argument = int(brightness)
     if argument > 0:
         argument = int(argument*2.55//1)
     WLED.LED_manager().change_state(1, True, [255,0,0], brightness=argument)
+    return "sucess"
 
 @app.route('/api/wled/<connect_id>/<id>/<led_state>/<led_rgb>/<brightness>', methods=['POST'])
 def change_led_state(device_id: int, connection_id: int, led_state: bool, led_rgb: list):

@@ -15,11 +15,9 @@ class LED_manager:
         self.create_leds()
     
     def configure_wled(self,url, settings):
-        print(settings)
         try:
             response = requests.post(url, json=settings)
             response.raise_for_status()
-            print(response)
             print("Konfigurace úspěšně odeslána.")
         except requests.exceptions.RequestException as e:
             print("Chyba při odesílání požadavku:", e)
@@ -59,7 +57,7 @@ class LED_manager:
 
 class LED():
     def __init__(self,position) -> None:
-        self.state = False
+        self.state = True
         self.color = [255,255,255]
         self.brightness=128
         self.position = position
@@ -74,7 +72,7 @@ class LED():
 
 
 manager = LED_manager()
-
+"""
 time.sleep(1)
 manager.change_state(1,False,[255,0,0])
 time.sleep(1)
@@ -85,3 +83,4 @@ manager.change_state(1,True,[0,0,255])
 manager.set_color(2,[0,0,0])
 manager.change_state(2,True,[255,0,0])
 manager.change_state(3,True,[0,255,0])
+"""

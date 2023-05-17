@@ -8,4 +8,4 @@ load_dotenv("locales.env")
 
 app = API_backend.app
 
-app.run(port=str(os.getenv("port", default="3000")))
+app.run(host="10.10.9.102",port=str(os.getenv("port", default="3000")))
