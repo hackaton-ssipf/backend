@@ -79,9 +79,13 @@ def get_ai_suggestion(device_type, start, end, device_id = -1):
     return AI_API.get_help(prompt)
 
 # registers a new device with a new device_id
-@app.route('/api/device/<connect_id>/<type>/<id>', methods=['POST'])
-def post_device(connect_id, id, type):
+@app.route('/api/devices', methods=['POST'])
+def post_device(data):
+    id = data["device_id"]
+    type = data["device_type"]
+    connect_id = data["connect_id"]
     database_management.add_device(id, connect_id, type)
+
 
 # deletes specific devices using the device_id
 @app.route('/api/device/<connect_id>/<type>/<id>', methods=['DELETE'])
