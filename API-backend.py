@@ -86,7 +86,6 @@ def post_device(data):
     connect_id = data["connect_id"]
     database_management.add_device(id, connect_id, type)
 
-
 # deletes specific devices using the device_id
 @app.route('/api/device/<connect_id>/<type>/<id>', methods=['DELETE'])
 def delete_device(connect_id, id, type):
