@@ -58,7 +58,7 @@ class LED_manager:
 class LED():
     def __init__(self,position) -> None:
         self.state = True
-        self.color = [255,255,255]
+        self.color = [0,0,255]
         self.brightness=128
         self.position = position
 
