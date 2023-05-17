@@ -92,10 +92,6 @@ def post_device(data):
 def delete_device(connect_id, id, type):
     database_management.remove_device(id, connect_id, type)
 
-@app.route('/api/wled_on/<led_state>', methods=['GET'])
-def switch_led(led_state: bool):
-    WLED.change_state(1, led_state, [255,0,0])
-
 @app.route('/api/brightness/<brightness>', methods=['GET'])
 def switch_led(brightness):
     argument = int(brightness)
