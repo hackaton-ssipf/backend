@@ -45,7 +45,7 @@ def generate_prompt(device_type: str, start: int, end: int, device_id: int = -1)
                     prompt += ' "' + i + '" was "' + str(metadata[i]) + '".'
                     
         prompt += "\n"
-    prompt += "\nQuestion: How can i optimize the usage of my smart house system based on these patterns?"
+    prompt += "\nQuestion: How can i optimize the usage of my smart house system based on these patterns? Do not include words like. Speak only in second person."
     return prompt
 
 # This function converts numbers like this: 20230715153000 into an array with a info about the reports year, month, day, hour, minute and second.

@@ -97,7 +97,7 @@ def delete_device(connect_id, id, type):
 
 @app.route('/api/wled_off/<led_state>', methods=['GET'])
 def switch_led(led_state):
-    WLED.LED_manager().change_state(1, led_state, [255,0,0])
+    WLED.LED_manager().change_state(1, led_state, [200, 78, 64])
     return "sucess"
 
 @app.route('/api/brightness/<brightness>', methods=['GET'])
@@ -105,7 +105,7 @@ def switch_led2(brightness):
     argument = int(brightness)
     if argument > 0:
         argument = int(argument*2.55//1)
-    WLED.LED_manager().change_state(1, True, [255,0,0], brightness=argument)
+    WLED.LED_manager().change_state(1, True, [200, 78, 64], brightness=argument)
     return "sucess"
 
 @app.route('/api/wled/<connect_id>/<id>/<led_state>/<led_rgb>/<brightness>', methods=['POST'])
