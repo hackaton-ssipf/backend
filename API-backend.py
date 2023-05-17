@@ -7,6 +7,7 @@ import prompt_generator
 import AI_API
 import database_management
 import WLED.main as WLED
+import requests
 
 load_dotenv("locales.env")
 device_filename = str(os.getenv('deviceDatabase', default="devices.csv"))
@@ -91,9 +92,11 @@ def delete_device(connect_id, id, type):
 def switch_led(led_state: bool):
     WLED.change_state(1, led_state, [255,0,0])
 
-@app.route('/api/brightness/<brightness>', methods=['GET'])
-def switch_led(brightness: int):
-    WLED.change_state(1, True, [255,0,0], brightness=brightness)
+@app.route('/api/brightness', methods=['GET'])
+def switch_led():
+    argument = int(requests.args.get('brightness'))
+    argument = argument*2.55//1
+    WLED.change_state(1, True, [255,0,0], brightness=argument)
 
 @app.route('/api/wled/<connect_id>/<id>/<led_state>/<led_rgb>/<brightness>', methods=['POST'])
 def change_led_state(device_id: int, connection_id: int, led_state: bool, led_rgb: list):
