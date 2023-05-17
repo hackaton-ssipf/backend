@@ -87,8 +87,25 @@ def post_device(connect_id, id, type):
 def delete_device(connect_id, id, type):
     database_management.remove_device(id, connect_id, type)
 
+@app.route('/api/wled_on/<id>/<led_state>', methods=['GET'])
+def switch_led(id:int, led_state: bool):
+    if id == 1:
+        WLED.change_state(id, led_state, [255,0,0])
+    if id == 2:
+        WLED.change_state(id, led_state, [255,255,255])
+    if id == 3:
+        WLED.change_state(id, led_state, [0,0,255])
 
-@app.route('/api/wled/<connect_id>/<id>/<led_state>/<led_rgb>', methods=['POST'])
+@app.route('/api/brightness/<id>/<brightness>', methods=['GET'])
+def switch_led(id:int, brightness: int):
+    if id == 1:
+        WLED.change_state(id, True, [255,0,0], brightness=brightness)
+    if id == 2:
+        WLED.change_state(id, True, [255,255,255], brightness=brightness)
+    if id == 3:
+        WLED.change_state(id, True, [0,0,255],  brightness=brightness)
+
+@app.route('/api/wled/<connect_id>/<id>/<led_state>/<led_rgb>/<brightness>', methods=['POST'])
 def change_led_state(device_id: int, connection_id: int, led_state: bool, led_rgb: list):
     if connection_id != int(os.getenv('id', default= -1)):
         return 1
