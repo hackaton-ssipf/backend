@@ -50,10 +50,10 @@ class LED_manager:
         return settings
     def change_state(self,device_id:int, state: bool, rgb: list, brightness=128 ):
         wled_url = "http://10.10.3.24/json/state"  # Nahraďte <adresa_wled> IP adresou a portem WLED
-        for i in range(5):
-            self.set_state(i+(device_id-1)*5,state)
-            self.set_color(i+(device_id-1)*5,rgb)
-            self.set_brightness(i+(device_id-1)*5,brightness)
+        for i in range(15):
+            self.set_state(i,state)
+            self.set_color(i,rgb)
+            self.set_brightness(i,brightness)
         self.configure_wled(wled_url,self.settings())
 
 
@@ -72,7 +72,7 @@ class LED():
 
 
 
-"""
+
 manager = LED_manager()
 
 time.sleep(1)
@@ -85,4 +85,3 @@ manager.change_state(1,True,[0,0,255])
 manager.set_color(2,[0,0,0])
 manager.change_state(2,True,[255,0,0])
 manager.change_state(3,True,[0,255,0])
-"""
